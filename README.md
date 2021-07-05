@@ -32,7 +32,7 @@ Instale os seguintes itens em sua maquina:
 2. Acesse a pasta raiz do projeto
 4. Rode o comando: docker volume create app-volume
 5. Rode o comando: docker build -t app-test -f devops/application/test/Dockerfile .
-6. Rode o comando: docker run --rm --mount source=test-volume,target=/app app-test
+6. Rode o comando: docker run --rm --mount source=test-volume,target=/app -e TEST_EXCLUSIONS="**/Models/%2c**/Migrations/%2c**/Enums/%2c**/Migrations/%2c**/DbContexts/%2c**/Entities/%2c/devops/%2c**/Program.cs%2c**/Startup.cs" app-test
 7. Rode o comando: docker build -t app-sonar -f devops/application/sonar/Dockerfile .
 8. Rode o comando: docker run \
                 --rm \
@@ -41,6 +41,8 @@ Instale os seguintes itens em sua maquina:
                 -e PROJECT_NAME="travels-backend" \
                 -e SONAR_HOST="your_host" \
                 -e SONAR_TOKEN="your_token" \
+                -e SONAR_EXCLUSIONS="**/Migrations/**" \
+                -e SONAR_COVERAGE_EXCLUSIONS="**/Models/**,**/Migrations/**,**/Enums/**,**/Migrations/**,**/DbContexts/**,**/Entities/**,**/devops/**,**/Program.cs,**/Startup.cs" \
                 app-sonar
 
 # Contribuidores

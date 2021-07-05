@@ -22,8 +22,16 @@ ENV PATH="$PATH:/root/.dotnet/tools"
 WORKDIR /app
 COPY . .
 
-CMD printenv && \
-    dotnet build-server shutdown && \
-    dotnet sonarscanner begin /o:rocket-seat /d:sonar.verbose=true /v:${VERSION}  /n:${PROJECT_NAME} /k:${PROJECT_NAME} /d:sonar.host.url=${SONAR_HOST} /d:sonar.cs.opencover.reportsPaths=Tests/coverage.opencover.xml /d:sonar.login=${SONAR_TOKEN} /d:sonar.coverage.exclusions="**/Models/**,**/Migrations/**,**/Enums/**,**/Migrations/**,**/DbContexts/**,**/Entities/**,**/devops/**,**/Program.cs,**/Startup.cs" && \
+CMD dotnet build-server shutdown && \
+    dotnet sonarscanner begin /o:rocket-seat \
+        /d:sonar.verbose=true \
+        /v:${VERSION} \
+        /n:${PROJECT_NAME} \
+        /k:${PROJECT_NAME} \
+        /d:sonar.host.url=${SONAR_HOST} \
+        /d:sonar.cs.opencover.reportsPaths=Tests/coverage.opencover.xml \
+        /d:sonar.login=${SONAR_TOKEN} \
+        /d:sonar.exclusions=${SONAR_EXCLUSIONS} \
+        /d:sonar.coverage.exclusions=${SONAR_COVERAGE_EXCLUSIONS} && \
     dotnet build && \
     dotnet sonarscanner end /d:sonar.login=${SONAR_TOKEN}
