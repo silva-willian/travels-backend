@@ -1,0 +1,31 @@
+name: ci
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    env:
+      PROJECT_NAME: travels-backend
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_REGION: us-east-1
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST: ${{ secrets.SONAR_HOST }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: unit-test
+      run: chmod +x ./devops/scripts/unit-test.sh && ./devops/scripts/unit-test.sh
+      
+    - name: sonar
+      run: chmod +x ./devops/scripts/sonar.sh && ./devops/scripts/sonar.sh
+
+    - name: build
+      run: chmod +x ./devops/scripts/build.sh && ./devops/scripts/build.sh
+      
