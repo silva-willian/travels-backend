@@ -32,7 +32,7 @@ build_push() {
 AWS_ACCOUNT_REGISTRY=$(aws sts get-caller-identity --output text |awk '{print $1}')
     check_sucessful
 
-VERSION="${GITHUB_RUN_ID}"
+VERSION="1.0.${GITHUB_RUN_NUMBER}"
 
 login
     check_sucessful

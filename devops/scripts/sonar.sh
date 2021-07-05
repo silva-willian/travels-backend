@@ -31,7 +31,7 @@ sonar_execute() {
         check_sucessful
 }
 
-VERSION="1.0.1"
+VERSION="1.0.${GITHUB_RUN_NUMBER}"
 VOlUME_NAME="${PROJECT_NAME}-volume-${VERSION}"
 
 sonar_build

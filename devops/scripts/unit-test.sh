@@ -24,7 +24,7 @@ test_execute() {
     docker rmi ${PROJECT_NAME}-test:${VERSION}
         check_sucessful
 }
-VERSION="${GITHUB_RUN_ID}"
+VERSION="1.0.${GITHUB_RUN_NUMBER}"
 
 VOlUME_NAME="${PROJECT_NAME}-volume-${VERSION}"
 
