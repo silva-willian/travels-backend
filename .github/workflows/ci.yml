@@ -34,4 +34,3 @@ jobs:
 
     - name: build
       run: chmod +x ./devops/scripts/build.sh && ./devops/scripts/build.sh
-      
