@@ -13,6 +13,7 @@ jobs:
       AWS_REGION: us-east-1
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       SONAR_HOST: ${{ secrets.SONAR_HOST }}
+      AWS_PROFILE: shared
     runs-on: ubuntu-latest
 
     steps:
