@@ -24,7 +24,7 @@ COPY . .
 
 CMD dotnet build-server shutdown && \
     dotnet sonarscanner begin /o:rocket-seat \
-        /d:sonar.verbose=true \
+        /d:sonar.verbose=false \
         /v:${VERSION} \
         /n:${PROJECT_NAME} \
         /k:${PROJECT_NAME} \
