@@ -8,7 +8,7 @@ check_sucessful(){
 }
 
 login() {
-    aws ecr get-login-password --region ${AWS_REGION} --profile ${AWS_PROFILE} | \
+    aws ecr get-login-password --region ${AWS_REGION} | \
         docker login --username AWS --password-stdin ${AWS_ACCOUNT_REGISTRY}.dkr.ecr.${AWS_REGION}.amazonaws.com
 }
 
@@ -29,7 +29,7 @@ build_push() {
         check_sucessful
 }
 
-AWS_ACCOUNT_REGISTRY=$(aws sts get-caller-identity --output text --profile ${AWS_PROFILE} |awk '{print $1}')
+AWS_ACCOUNT_REGISTRY=$(aws sts get-caller-identity --output text |awk '{print $1}')
     check_sucessful
 
 VERSION="1.0.${GITHUB_RUN_NUMBER}"
