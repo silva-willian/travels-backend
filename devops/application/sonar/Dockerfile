@@ -32,7 +32,6 @@ CMD dotnet build-server shutdown && \
         /d:sonar.cs.opencover.reportsPaths=Tests/coverage.opencover.xml \
         /d:sonar.login=${SONAR_TOKEN} \
         /d:sonar.exclusions=${SONAR_EXCLUSIONS} \
-        /d:sonar.coverage.exclusions=${SONAR_COVERAGE_EXCLUSIONS} \
-        /d:sonar.branch.name=develop && \
+        /d:sonar.coverage.exclusions=${SONAR_COVERAGE_EXCLUSIONS} && \
     dotnet build && \
     dotnet sonarscanner end /d:sonar.login=${SONAR_TOKEN}

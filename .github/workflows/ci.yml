@@ -28,7 +28,7 @@ jobs:
         aws-region: us-east-1
 
     - name: unit-test
-      run: chmod +x ./devops/scripts/unit-test.sh && ./devops/scripts/unit-test.sh
+      run: printenv && chmod +x ./devops/scripts/unit-test.sh && ./devops/scripts/unit-test.sh
       
     - name: sonar
       run: chmod +x ./devops/scripts/sonar.sh && ./devops/scripts/sonar.sh
