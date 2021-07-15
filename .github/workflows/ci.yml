@@ -2,9 +2,13 @@ name: ci
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - main
+      - master
+      - dev
+      - develop
+      - development
+      - release
   workflow_dispatch:
 
 
