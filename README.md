@@ -43,6 +43,7 @@ Instale os seguintes itens em sua maquina:
                 -e SONAR_TOKEN="696dc92dd6d6b94e91ca82d8b6f0cbc66cac76ae" \
                 -e SONAR_EXCLUSIONS="**/Migrations/**" \
                 -e SONAR_COVERAGE_EXCLUSIONS="**/Models/**,**/Migrations/**,**/Enums/**,**/Migrations/**,**/DbContexts/**,**/Entities/**,**/devops/**,**/Program.cs,**/Startup.cs" \
+                -e BRANCH="master" \
                 app-sonar
 
 # Contribuidores

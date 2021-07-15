@@ -12,6 +12,7 @@ sonar_build() {
 }
 
 sonar_execute() {
+    BRANCH=`echo ${GITHUB_REF} | sed "s/refs\/heads\///g"`    
 
     docker run \
         --rm \
@@ -22,6 +23,7 @@ sonar_execute() {
         -e SONAR_TOKEN="${SONAR_TOKEN}" \
         -e SONAR_EXCLUSIONS="**/Migrations/**" \
         -e SONAR_COVERAGE_EXCLUSIONS="**/Models/**,**/Migrations/**,**/Enums/**,**/Migrations/**,**/DbContexts/**,**/Entities/**,**/devops/**,**/Program.cs,**/Startup.cs" \
+        -e BRANCH=${BRANCH} \
         ${PROJECT_NAME}-sonar:${VERSION}
 
     docker rmi ${PROJECT_NAME}-sonar:${VERSION}
