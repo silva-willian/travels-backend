@@ -14,19 +14,13 @@ login() {
 }
 
 build_push() {
-    docker build -t ${PROJECT_NAME}:${VERSION} -f devops/application/build/Dockerfile .
-        check_sucessful
-
-    docker tag ${PROJECT_NAME}:${VERSION} ${AWS_ACCOUNT_REGISTRY}.dkr.ecr.${AWS_REGION}.amazonaws.com/${PROJECT_NAME}:${VERSION}
+    docker build -t ${AWS_ACCOUNT_REGISTRY}.dkr.ecr.${AWS_REGION}.amazonaws.com/${PROJECT_NAME}:${VERSION} -f devops/application/build/Dockerfile .
         check_sucessful
 
     docker push ${AWS_ACCOUNT_REGISTRY}.dkr.ecr.${AWS_REGION}.amazonaws.com/${PROJECT_NAME}:${VERSION}
         check_sucessful
 
     docker rmi ${AWS_ACCOUNT_REGISTRY}.dkr.ecr.${AWS_REGION}.amazonaws.com/${PROJECT_NAME}:${VERSION}
-        check_sucessful
-
-    docker rmi ${PROJECT_NAME}:${VERSION}
         check_sucessful
 }
 
