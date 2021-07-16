@@ -39,11 +39,11 @@ Instale os seguintes itens em sua maquina:
                 --mount source=app-volume,target=/app \
                 -e VERSION="1.0.0" \
                 -e PROJECT_NAME="travels-backend" \
-                -e SONAR_HOST="https://sonarcloud.io" \
-                -e SONAR_TOKEN="696dc92dd6d6b94e91ca82d8b6f0cbc66cac76ae" \
+                -e SONAR_HOST="your_host" \
+                -e SONAR_TOKEN="your_token" \
                 -e SONAR_EXCLUSIONS="**/Migrations/**" \
                 -e SONAR_COVERAGE_EXCLUSIONS="**/Models/**,**/Migrations/**,**/Enums/**,**/Migrations/**,**/DbContexts/**,**/Entities/**,**/devops/**,**/Program.cs,**/Startup.cs" \
-                -e BRANCH="master" \
+                -e BRANCH="develop" \
                 app-sonar
 
 # Contribuidores
