@@ -7,6 +7,18 @@ check_sucessful(){
     fi
 }
 
+create_repository(){
+
+  EXISTS=$(echo `aws ecr describe-repositories --repository-name $PROJECT_NAME --region ${AWS_REGION} |grep repositoryName | sed -e 's/\"//g' | sed -e 's/.*repositoryName://' | sed -e 's/\,//g'`)
+
+  if [ -z "$EXISTS" ];
+  then
+    aws ecr create-repository \
+      --repository-name "$PROJECT_NAME" \
+      --image-tag-mutability IMMUTABLE \
+      --image-scanning-configuration scanOnPush=true
+  fi
+}
 
 login() {
     aws ecr get-login-password --region ${AWS_REGION} | \
@@ -28,6 +40,9 @@ AWS_ACCOUNT_REGISTRY=$(aws sts get-caller-identity --output text |awk '{print $1
     check_sucessful
 
 VERSION="1.0.${GITHUB_RUN_NUMBER}"
+
+create_repository
+    check_sucessful
 
 login
     check_sucessful
