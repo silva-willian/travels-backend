@@ -15,17 +15,16 @@ on:
 jobs:
   deploy:
     env:
-      PROJECT_NAME: iac-network
+      PROJECT_NAME: travels-backend
       AWS_REGION: us-east-1
       REMOTE_STATE_BUCKET: rocketseat-remote-state
       REMOTE_STATE_FILE: travels-backend-database.tfstate
       REMOTE_STATE_AWS_REGION: us-east-1
-      PRODUCT: network
+      PRODUCT: rocketseat
       CREATED_BY: devops-tools
-      OWNER: squad-network
+      OWNER: squad-rocketseat
       ENV: ${{ github.event.inputs.ENV }}
       ENV_VERSION: ${{ github.event.inputs.ENV_VERSION }}
-      PROJECT: travels-backend
       ROLE: db
       ENGINE: aurora-postgresql
       ENGINE_VERSION: 10.7

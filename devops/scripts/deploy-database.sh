@@ -25,7 +25,7 @@ deploy() {
         -e PRODUCT="${PRODUCT}" \
         -e CREATED_BY="${CREATED_BY}" \
         -e OWNER="${OWNER}" \
-        -e PROJECT="${PROJECT}" \
+        -e PROJECT="${PROJECT_NAME}" \
         -e ROLE="${ROLE}" \
         -e ENGINE="${ENGINE}" \
         -e ENGINE_VERSION="${ENGINE_VERSION}" \
