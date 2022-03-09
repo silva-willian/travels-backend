@@ -39,6 +39,7 @@ Instale os seguintes itens em sua maquina:
                 --mount source=app-volume,target=/app \
                 -e VERSION="1.0.0" \
                 -e PROJECT_NAME="travels-backend" \
+                -e SONAR_ORGANIZATION="your_org" \
                 -e SONAR_HOST="your_host" \
                 -e SONAR_TOKEN="your_token" \
                 -e SONAR_EXCLUSIONS="**/Migrations/**" \
